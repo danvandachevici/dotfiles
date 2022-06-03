@@ -1,24 +1,31 @@
+" Include plugins:
+source plugins.vim
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
-set hidden
+"set hidden
 "set signcolumn=yes:2
 set relativenumber
 set number
-set termguicolors
+"set termguicolors
 set spell
-set wildmode=longest:full,full
-set list
+"set wildmode=longest:full,full
+"set list
 "set listchars=tab:>' ,trail:°
-set mouse=a
-set scrolloff=8
-set nojoinspaces
-set splitright
-"set clipboard=unnamedplus
-set confirm
-set exrc
-set updatetime=300
-set redrawtime=10000
+"set mouse=a
+"set scrolloff=8
+"set nojoinspaces
+"set splitright
+set clipboard=unnamed
+"set confirm
+"set exrc
+"set updatetime=300
+"set redrawtime=10000
+set smartindent
+
+syntax on
+
 
 
 " searching
@@ -28,7 +35,7 @@ set ignorecase
 set smartcase
 
 " backspace over everything
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 
 
 "-------------------------
@@ -41,9 +48,6 @@ nmap <leader>f :Files<cr>
 
 map gf :edit <cfile><cr>
 
-"~/.z.sh
-"
-"
 ""-----------------------------
 
 " status line
@@ -68,4 +72,4 @@ set statusline+=\ \ %P  "percent through file
 " ------------------------
 "  Plugins
 " ------------------------
-source ~/.vim/partials/vim-plug.vim
+"source ~/.vim/partials/vim-plug.vim
