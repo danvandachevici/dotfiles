@@ -69,21 +69,10 @@ map gf :edit <cfile><cr>
 " status line
 source ~/.vim/statusline.vim
 
-" status line
-""hi User1 ctermbg=gray  ctermfg=black
-""hi User2 ctermbg=gray  ctermfg=red cterm=bold
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-"set laststatus=2
-"set statusline=     "reset statusline
-"set statusline+=%1* "black on gray
-"set statusline+=%F      "full filename
-"set statusline+=\ %y    "filetype
-"set statusline+=\ %h    "help file flag
-"set statusline+=\ %2*   "white on red
-"set statusline+=%m      "modified flag
-"set statusline+=%1* "black on gray
-"set statusline+=\ %r    "read only flag
-"set statusline+=%=      "left/right separator
-"set statusline+=%c,     "cursor column
-"set statusline+=%l/%L   "cursor line/total lines
-"set statusline+=\ \ %P  "percent through file
+
