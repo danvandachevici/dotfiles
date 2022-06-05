@@ -30,6 +30,8 @@ set clipboard=unnamed
 "set redrawtime=10000
 set smartindent
 
+set magic
+
 syntax on
 
 " Shows your command in the bottom right corner, on normal mode
@@ -44,8 +46,8 @@ set ignorecase
 set smartcase
 
 " Resizing splits
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 
 " backspace over everything

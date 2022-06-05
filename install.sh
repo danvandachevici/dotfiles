@@ -9,6 +9,9 @@ VIMFOLDER=$HOME/.vim
 
 #link vimrc
 [ ! -f ~/.vimrc ] && ln -s $PWD/vimrc $VIMFOLDER/.vimrc
-
 [ ! -f ~/.vim/plugins.vim ] && ln -s $PWD/plugins.vim $VIMFOLDER/plugins.vim
 [ ! -f ~/.vim/statusline.vim ] && ln -s $PWD/statusline.vim $VIMFOLDER/statusline.vim
+
+
+#link bash
+[ ! -f ~/.bashrc ] && ln -s $PWD/bashrc $HOME/.bashrc && source $HOME/.bashrc

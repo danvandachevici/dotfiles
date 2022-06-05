@@ -17,6 +17,8 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'vim-syntastic/syntastic'
+
 
 
 " All of your Plugins must be added before the following line
