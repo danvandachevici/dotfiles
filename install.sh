@@ -11,11 +11,14 @@ VIMFOLDER=$HOME/.vim
 [ ! -f ~/.vimrc ] && ln -s $CURPATH/vimrc $VIMFOLDER/.vimrc
 [ ! -f ~/.vim/plugins.vim ] && ln -s $CURPATH/plugins.vim $VIMFOLDER/plugins.vim
 [ ! -f ~/.vim/statusline.vim ] && ln -s $CURPATH/statusline.vim $VIMFOLDER/statusline.vim
+[ ! -f ~/.vim/tabline.vim ] && ln -s $CURPATH/tabline.vim $VIMFOLDER/tabline.vim
 
 # BASH
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc
 
 # ZSH
+
+[ ! -f ~/.aliases ] && ln -s $CURPATH/aliases $HOME/.aliases
 [ ! -f ~/.zshrc ] && ln -s $CURPATH/zshrc $HOME/.zshrc && source $HOME/.zshrc
 
 # TMUX

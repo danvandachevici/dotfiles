@@ -5,33 +5,29 @@ source ~/.vim/plugins.vim
 set expandtab
 set shiftwidth=2
 set tabstop=2
-"set hidden
-"set signcolumn=yes:2
 " Aspect
-"set relativenumber
 set number
-"set termguicolors
 
 " Text
-"set spell
 "set wildmode=longest:full,full
-"set list
+set wildmode=list:longest,list:full
+
 " Display chars on tabs and trailing spaces -> 
 set list lcs=tab:»·,trail:·
-"set mouse=a
-"set scrolloff=8
-"set nojoinspaces
-"set splitright
+
+" enable mouse actions
+set mouse=a
+" how many spaces to keep below and under cursor
+set scrolloff=8
+
 " use system clipboard
 set clipboard=unnamed
-"set confirm
-"set exrc
-"set updatetime=300
+
+" after how many miliseconds of inactivity to write the swapfile (for backup)
+set updatetime=1000
+
 "set redrawtime=10000
 set smartindent
-set statusline+=%1*
-hi User1 ctermbg=lightgray ctermfg=darkgreen guibg=lightgray guifg=darkgreen
-hi User2 ctermbg=lightgray ctermfg=black guibg=lightgray guifg=black
 "set magic
 
 " not sure which one of these two does the job
@@ -72,6 +68,9 @@ map gf :edit <cfile><cr>
 " status line
 source ~/.vim/statusline.vim
 
+" tab line
+source ~/.vim/tabline.vim
+
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -85,15 +84,17 @@ nnoremap <Leader>l :ls<CR>
 " reload vimrc
 nnoremap <Leader>r :source ~/.vimrc<cr>
 
-"noremap is not recursive
-"map is recursive
-" change between buffers
-nmap „ :bp
-nmap ” :bn
+" TABS
+nmap „ :tabp<cr>
+nmap ” :tabn<cr>
+nmap ¨ :tabm -<cr>
+nmap ± :tabm +<cr>
+
+nmap tn :tab n 
+
 
 " move line up and down
-nnoremap ˚ :m .+1<CR>
-nnoremap ˝ :m .-2<CR>
+" TODO
 
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
