@@ -29,10 +29,17 @@ set clipboard=unnamed
 "set updatetime=300
 "set redrawtime=10000
 set smartindent
+set statusline+=%1*
+hi User1 ctermbg=lightgray ctermfg=darkgreen guibg=lightgray guifg=darkgreen
+hi User2 ctermbg=lightgray ctermfg=black guibg=lightgray guifg=black
+"set magic
 
-set magic
-
+" not sure which one of these two does the job
 syntax on
+syntax enable
+
+
+"highlight Comment cterm=underline ctermbg=Blue ctermfg=White
 
 " Shows your command in the bottom right corner, on normal mode
 set showcmd
@@ -46,21 +53,17 @@ set ignorecase
 set smartcase
 
 " Resizing splits
-"nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-"nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winwidth(0) * 2/3)<CR>
 
 
 " backspace over everything
 " set backspace=indent,eol,start
 
 
-"-------------------------
-" Key maps
-"-------------------------
+" remap leader key. Default is \\, this is just to always remember the default
+let mapleader="\\"
 
-let mapleader="\<space>"
-
-nmap <leader>f :Files<cr>
 
 map gf :edit <cfile><cr>
 
@@ -76,3 +79,28 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" buffers
+nnoremap <Leader>l :ls<CR>
+
+" reload vimrc
+nnoremap <Leader>r :source ~/.vimrc<cr>
+
+"noremap is not recursive
+"map is recursive
+" change between buffers
+nmap „ :bp
+nmap ” :bn
+
+" move line up and down
+nnoremap ˚ :m .+1<CR>
+nnoremap ˝ :m .-2<CR>
+
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>

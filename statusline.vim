@@ -20,18 +20,22 @@ set statusline+=%4*
 "set statusline+=%5*
 set statusline+=%1*
 set statusline+=|
-set statusline+=filetype:\ 
-set statusline+=%Y
-set statusline+=\ @\ 
-set statusline+=%l/%L
-set statusline+=-
-set statusline+=%c/120
+set statusline+=%y
+set statusline+=\ @
+set statusline+=\ %p%%\ \ 
+"set statusline+=\ %l:%c\  
+" current buffer
+set statusline+=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+"set statusline+=%l/%L
+"set statusline+=-
+"set statusline+=%c/120
 
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+hi StatusLine ctermbg=cyan ctermfg=white
 
 "hi User2 ctermbg=lightgreen ctermfg=black guibg=lightgreen guifg=black
 "hi User1 ctermbg=black ctermfg=white guibg=black guifg=white
