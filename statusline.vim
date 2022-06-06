@@ -79,10 +79,11 @@ function! GetGitBranch()
   let g:git_branch = l:is_git_dir == 'true' ? system('bash -c "echo -n $(git rev-parse --abbrev-ref HEAD)"') : ''
 endfunction
 
-"function! GetGitDiffSummary()
-"  let l:file_diff = system('bash -c "git log --numstat --pretty=\"%H\" HEAD~1..HEAD | awk \'NF==3 {plus+=$1; minus+=$2} END {printf(\"+%d, -%d\n\", plus, minus)}"');
-"  return l:file_diff
-"endfunction
+function! GetGitDiffSummary()
+  "let l:file_additions = system("git diff --numstat | awk -F '\t' '{printf($1)}'")
+  "let l:file_subtractions = system("git diff --numstat | awk -F '\t' '{printf($2)}'")
+  "return l:file_additions . ", " . l:file_subtractions
+endfunction
 
 autocmd BufEnter * call GetGitBranch()
 
