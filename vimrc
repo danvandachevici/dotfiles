@@ -1,8 +1,10 @@
+set nocompatible
+
 " Include plugins:
 source ~/.vim/plugins.vim
 
 " Setup style
-set expandtab
+"set expandtab
 set shiftwidth=2
 set tabstop=2
 " Aspect
@@ -105,3 +107,5 @@ nnoremap <Leader>6 :6b<CR>
 nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
+
+nmap diff :tab !git difftool -- %<cr>

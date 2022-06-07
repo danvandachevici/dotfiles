@@ -4,8 +4,9 @@ set statusline+=%2*
 set statusline+=\ \ %{StatuslineMode()}\ \ 
 set statusline+=%4*
 set statusline+=\ \ %{StatuslineGitBranch()}\ \ 
+" Show numstat
+set statusline+=\ \ %{GetGitDiffSummary()}\ \ 
 set statusline+=%3*
-set statusline+=%{GetGitDiffSummary()}
 set statusline+=\ \ %F\ \ 
 set statusline+=%1*
 set statusline+=\ \ 
@@ -15,8 +16,6 @@ set statusline+=%h
 set statusline+=%r
 set statusline+=\ 
 set statusline+=%2*
-" Name of the current branch (needs fugitive.vim)
-" set statusline+=\ %{FugitiveStatusline()}\ 
 set statusline+=
 set statusline+=%1*
 set statusline+=\ 
@@ -80,11 +79,14 @@ function! GetGitBranch()
 endfunction
 
 function! GetGitDiffSummary()
-  "let l:file_additions = system("git diff --numstat | awk -F '\t' '{printf($1)}'")
-  "let l:file_subtractions = system("git diff --numstat | awk -F '\t' '{printf($2)}'")
-  "return l:file_additions . ", " . l:file_subtractions
+  "let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
+  "let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
+  "let l:file_additions = "+".system("git diff --numstat -- % | awk '{print($1)}'")
+  "let l:file_subtractions = "-".system("git diff --numstat -- % | awk '{print($2)}'")
+  "return l:file_additions."/".l:file_subtractions
+  "return l:file_additions
 endfunction
 
 autocmd BufEnter * call GetGitBranch()
-
+autocmd BufEnter * call GetGitDiffSummary()
 
