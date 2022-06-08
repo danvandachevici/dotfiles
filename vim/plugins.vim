@@ -20,6 +20,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 
 
 " All of your Plugins must be added before the following line

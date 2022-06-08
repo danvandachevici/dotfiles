@@ -90,9 +90,9 @@ endfunction
 function! GetGitDiffSummary()
 "  let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
 "  let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
-  let l:adds = "+".system("git diff --numstat -- % | awk '{print($1)}'")
-  let l:subs = "-".system("git diff --numstat -- % | awk '{print($2)}'")
-  return l:adds."/".l:subs
+"  let l:adds = "+".system("git diff --numstat -- % | awk '{printf($1)}'")
+"  let l:subs = "-".system("git diff --numstat -- % | awk '{printf($2)}'")
+"  return l:adds."/".l:subs
 endfunction
 
 autocmd BufEnter * call GetGitBranch()

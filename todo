@@ -1,12 +1,12 @@
 prio 0
 [*] fix git branch
-[ ] fix git diff --numstat
-[ ] fix statusline colors
-[ ] move between buffers
-[ ] show buffers list
+[ ] fix git diff --numstat    # https://stackoverflow.com/questions/72551863/vim-diy-statusline-git-diff-numstat
+[*] fix statusline colors
+[x] move between buffers
+[x] show buffers list
 
 prio 1
 [ ] vim commands work against tmux
 [ ] statusline in tmux
-[ ] fzf in vim
+[*] fzf in vim
 [ ] nerd tree in vim

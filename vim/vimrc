@@ -110,6 +110,7 @@ nmap diff :tab Gdiff<cr>
 nmap ț :terminal<cr><c-w>J<cr><c-w>:resize 20<cr>
 tmap <esc><esc> <c-w>:q!<cr>
 
+nmap  :Files<cr>
 
 " Vimscript file settings {{{
 augroup filetype_vim
