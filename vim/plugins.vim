@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'vim-syntastic/syntastic'
+Plugin 'airblade/vim-gitgutter'
 
 
 

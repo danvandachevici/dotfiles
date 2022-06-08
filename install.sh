@@ -8,10 +8,12 @@ CURPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # VIM
 VIMFOLDER=$HOME/.vim
 [ ! -d ~/.vim ] && mkdir ~/.vim
-[ ! -f ~/.vimrc ] && ln -s $CURPATH/vimrc $VIMFOLDER/.vimrc
-[ ! -f ~/.vim/plugins.vim ] && ln -s $CURPATH/plugins.vim $VIMFOLDER/plugins.vim
-[ ! -f ~/.vim/statusline.vim ] && ln -s $CURPATH/statusline.vim $VIMFOLDER/statusline.vim
-[ ! -f ~/.vim/tabline.vim ] && ln -s $CURPATH/tabline.vim $VIMFOLDER/tabline.vim
+[ ! -f ~/.vimrc ] && ln -s $CURPATH/vim/vimrc $HOME/.vimrc
+
+[ ! -f ~/.vim/plugins.vim ] && ln -s $CURPATH/vim/plugins.vim $VIMFOLDER/plugins.vim
+[ ! -f ~/.vim/statusline.vim ] && ln -s $CURPATH/vim/statusline.vim $VIMFOLDER/statusline.vim
+[ ! -f ~/.vim/tabline.vim ] && ln -s $CURPATH/vim/tabline.vim $VIMFOLDER/tabline.vim
+[ ! -f ~/.vim/syntastic.vim ] && ln -s $CURPATH/vim/syntastic.vim $VIMFOLDER/syntastic.vim
 
 # BASH
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc

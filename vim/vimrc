@@ -1,10 +1,14 @@
 set nocompatible
 
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
+
 " Include plugins:
 source ~/.vim/plugins.vim
 
 " Setup style
-"set expandtab
+set expandtab
 set shiftwidth=2
 set tabstop=2
 " Aspect
@@ -63,9 +67,8 @@ nnoremap <silent> <Leader>- :exe "resize " . (winwidth(0) * 2/3)<CR>
 let mapleader="\\"
 
 
-map gf :edit <cfile><cr>
+"map gf :edit <cfile><cr>
 
-""-----------------------------
 
 " status line
 source ~/.vim/statusline.vim
@@ -74,38 +77,43 @@ source ~/.vim/statusline.vim
 source ~/.vim/tabline.vim
 
 " syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+source ~/.vim/syntastic.vim
 
 " buffers
 nnoremap <Leader>l :ls<CR>
 
 " reload vimrc
-nnoremap <Leader>r :source ~/.vimrc<cr>
-
-" TABS
-nmap „ :tabp<cr>
-nmap ” :tabn<cr>
-nmap ¨ :tabm -<cr>
-nmap ± :tabm +<cr>
-
-nmap tn :tab n 
+nnoremap <Leader>r :source $MYVIMRC<cr>
 
 
-" move line up and down
-" TODO
 
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
-nnoremap <Leader>6 :6b<CR>
-nnoremap <Leader>7 :7b<CR>
-nnoremap <Leader>8 :8b<CR>
-nnoremap <Leader>9 :9b<CR>
+"TODO move line up and down
 
-nmap diff :tab !git difftool -- %<cr>
+nnoremap <Leader>2 :1b<CR>
+nnoremap <Leader>3 :2b<CR>
+nnoremap <Leader>4 :3b<CR>
+nnoremap <Leader>5 :4b<CR>
+nnoremap <Leader>6 :5b<CR>
+nnoremap <Leader>7 :6b<CR>
+nnoremap <Leader>8 :7b<CR>
+nnoremap <Leader>9 :8b<CR>
+nnoremap <Leader>10 :9b<CR>
+
+" Comment
+"vmap  
+
+" My poor attempt at opening a tab with a git diff
+"map diff :tab !git difftool -- %<cr><cr>
+nmap diff :tab Gdiff<cr>
+
+" Terminal
+nmap ț :terminal<cr><c-w>J<cr><c-w>:resize 20<cr>
+tmap <esc><esc> <c-w>:q!<cr>
+
+
+" Vimscript file settings {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}

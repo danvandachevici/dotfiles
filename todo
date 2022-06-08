@@ -1,13 +1,12 @@
 prio 0
-* fix git branch
-* fix git status
-* fix statusline colors
-* move between buffers
-* show buffers list
+[*] fix git branch
+[ ] fix git diff --numstat
+[ ] fix statusline colors
+[ ] move between buffers
+[ ] show buffers list
 
 prio 1
-* vim commands work against tmux
-* statusline in tmux
-* fzf in vim
-* nerd tree in vim
-* 
+[ ] vim commands work against tmux
+[ ] statusline in tmux
+[ ] fzf in vim
+[ ] nerd tree in vim

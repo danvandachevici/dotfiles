@@ -1,25 +1,31 @@
+let g:branch_symbol = '⎇ '
+
+" always show the status line
 set laststatus=2
 set statusline=
 set statusline+=%2*
 set statusline+=\ \ %{StatuslineMode()}\ \ 
 set statusline+=%4*
-set statusline+=\ \ %{StatuslineGitBranch()}\ \ 
+set statusline+=\ \ %{g:branch_symbol}\ %{StatuslineGitBranch()}\ \ 
 " Show numstat
 set statusline+=\ \ %{GetGitDiffSummary()}\ \ 
 set statusline+=%3*
+" File name & path (f for just file name)
 set statusline+=\ \ %F\ \ 
 set statusline+=%1*
-set statusline+=\ \ 
+
+
+" Left-Right separator
 set statusline+=%=
+
+" Modified flag [+]
 set statusline+=%m
-set statusline+=%h
-set statusline+=%r
-set statusline+=\ 
-set statusline+=%2*
-set statusline+=
-set statusline+=%1*
-set statusline+=\ 
-set statusline+=%1*
+" Readonly flag
+set statusline+=%R\ 
+
+" Value of character under cursor (dec & hex)
+set statusline+=dec(%b)\ hex(%B)\ 
+set statusline+=%a
 
 set statusline+=%5*
 set statusline+=|
@@ -29,7 +35,10 @@ set statusline+=%y
 set statusline+=\ @
 set statusline+=\ %p%%\ 
 " current buffer
-set statusline+=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline+=CurBuf:%n\ \ 
+
+" filename
+set statusline+=%f\ \ 
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -79,14 +88,12 @@ function! GetGitBranch()
 endfunction
 
 function! GetGitDiffSummary()
-  "let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
-  "let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
-  "let l:file_additions = "+".system("git diff --numstat -- % | awk '{print($1)}'")
-  "let l:file_subtractions = "-".system("git diff --numstat -- % | awk '{print($2)}'")
-  "return l:file_additions."/".l:file_subtractions
-  "return l:file_additions
+"  let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
+"  let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
+  let l:adds = "+".system("git diff --numstat -- % | awk '{print($1)}'")
+  let l:subs = "-".system("git diff --numstat -- % | awk '{print($2)}'")
+  return l:adds."/".l:subs
 endfunction
 
 autocmd BufEnter * call GetGitBranch()
-autocmd BufEnter * call GetGitDiffSummary()
 
