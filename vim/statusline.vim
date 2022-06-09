@@ -8,7 +8,7 @@ set statusline+=\ \ %{StatuslineMode()}\ \
 set statusline+=%4*
 set statusline+=\ \ %{g:branch_symbol}\ %{StatuslineGitBranch()}\ \ 
 " Show numstat
-set statusline+=\ \ %{GetGitDiffSummary()}\ \ 
+"set statusline+=\ \ %{GetGitDiffSummary()}\ \ 
 set statusline+=%3*
 " File name & path (f for just file name)
 set statusline+=\ \ %F\ \ 
@@ -29,7 +29,7 @@ set statusline+=%a
 
 set statusline+=%5*
 set statusline+=|
-"
+
 " [filetype] @ xx%
 set statusline+=%y
 set statusline+=\ @
