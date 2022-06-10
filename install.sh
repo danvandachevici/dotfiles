@@ -15,6 +15,7 @@ VIMFOLDER=$HOME/.vim
 [ ! -f ~/.vim/tabline.vim ] && ln -s $CURPATH/vim/tabline.vim $VIMFOLDER/tabline.vim
 [ ! -f ~/.vim/syntastic.vim ] && ln -s $CURPATH/vim/syntastic.vim $VIMFOLDER/syntastic.vim
 [ ! -f ~/.vim/comments.vim ] && ln -s $CURPATH/vim/comments.vim $VIMFOLDER/comments.vim
+[ ! -f ~/.vim/fzf.vim ] && ln -s $CURPATH/vim/fzf.vim $VIMFOLDER/fzf.vim
 
 # BASH
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc

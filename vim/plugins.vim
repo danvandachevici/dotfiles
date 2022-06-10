@@ -12,18 +12,30 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+" git-related actions
 Plugin 'tpope/vim-fugitive'
 
+" syntactic checker
 Plugin 'vim-syntastic/syntastic'
+
+" displays inline git diff
 Plugin 'airblade/vim-gitgutter'
 
+" fzf
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+" commenting out all types of files
 Plugin 'tpope/vim-commentary'
+
+" emmet like HTML building
+Plugin 'mattn/emmet-vim'
+
+" changing starting tag fixes the end tag too
+Plugin 'AndrewRadev/tagalong.vim'
+
+" mark display
+Plugin 'kshenoy/vim-signature'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

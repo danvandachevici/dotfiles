@@ -2,42 +2,32 @@ set nocompatible
 
 set directory=.swp/,~/.swapfiles/,/tmp/
 
-" Include plugins:
-source ~/.vim/plugins.vim
+source ~/.vim/plugins.vim        " Include plugins:
 
 " Setup style
 set expandtab
 set shiftwidth=2
 set tabstop=2
 
-" Aspect
-set number
+set number        " Aspect
 
-" Autocompletion on the commands
-set wildmode=list:longest,list:full
+set wildmode=list:longest,list:full        " Autocompletion on the commands
 
-" Display chars on tabs and trailing spaces -> 
-set list lcs=tab:»·,trail:·
+set list lcs=tab:»·,trail:·        " Display chars on tabs and trailing spaces -> 
 
-" enable mouse actions
-set mouse=a
+set mouse=a        " enable mouse actions
 
-" how many spaces to keep below and under cursor
-set scrolloff=8
+set scrolloff=8        " how many spaces to keep below and under cursor
 
-" use system clipboard
-set clipboard=unnamed
+set clipboard=unnamed        " use system clipboard
 
-" after how many miliseconds of inactivity to write the swapfile (for backup)
-set updatetime=1000
+set updatetime=1000        " after how many miliseconds of inactivity to write the swapfile (for backup)
 
-" indenting smartly
-set smartindent
-" regex matching
-set magic
+set smartindent        " indenting smartly
 
-" not sure which one of these two does the job
-syntax enable
+set magic        " regex matching
+
+syntax enable        " not sure which one of these two does the job
 
 " Pasting + reindentation & default pasting
 nnoremap p ]p
@@ -45,10 +35,8 @@ nnoremap <c-p> p
 
 highlight Comment cterm=underline ctermbg=black ctermfg=lightgray
 
-" Shows your command in the bottom right corner, on normal mode
-set showcmd
-" By default, the <Leader> is toggled for 1s. Below I move it to 5s.
-set timeoutlen=5000
+set showcmd        " Shows your command in the bottom right corner, on normal mode
+set timeoutlen=5000        " By default, the <Leader> is toggled for 1s. Below I move it to 5s.
 
 " Searching
 set incsearch
@@ -65,59 +53,43 @@ nnoremap <silent> <Leader>- :exe "resize " . (winwidth(0) * 2/3)<CR>
 " set backspace=indent,eol,start
 
 
-" remap leader key. Default is \\, this is just to always remember the default
-let mapleader="\\"
+let mapleader="\\"        " remap leader key. Default is \\, this is just to always remember the default
 
 
 "map gf :edit <cfile><cr>
 
 
-" status line
-source ~/.vim/statusline.vim
+source ~/.vim/statusline.vim        " status line
 
-" tab line
-source ~/.vim/tabline.vim
+source ~/.vim/tabline.vim        " tab line
 
-" syntastic
-source ~/.vim/syntastic.vim
+source ~/.vim/syntastic.vim        " syntastic
 
-" buffers
-nnoremap <Leader>l :ls<CR>
+source ~/.vim/fzf.vim           " fzf
 
-" reload vimrc
-nnoremap <Leader>r :source $MYVIMRC<cr>
+nnoremap <Leader>l :ls<CR>        " buffers
+
+nnoremap <Leader>r :source $MYVIMRC<cr>        " reload vimrc
 
 "TODO move line up and down
 
-nnoremap <Leader>2 :1b<CR>
-nnoremap <Leader>3 :2b<CR>
-nnoremap <Leader>4 :3b<CR>
-nnoremap <Leader>5 :4b<CR>
-nnoremap <Leader>6 :5b<CR>
-nnoremap <Leader>7 :6b<CR>
-nnoremap <Leader>8 :7b<CR>
-nnoremap <Leader>9 :8b<CR>
-nnoremap <Leader>10 :9b<CR>
 
-" My poor attempt at opening a tab with a git diff
-"map diff :tab !git difftool -- %<cr><cr>
-nnoremap diff :tab Gdiff<cr>
+nnoremap diff :tab Gdiff<cr>        " Open a tab with a git diff
 
 " Terminal
-nnoremap ț :terminal<cr><c-w>J<cr><c-w>:resize 20<cr>
+nnoremap ț :let $VIM_DIR=expand('%:p:h')<cr>:terminal<cr>cd $VIM_DIR<CR><c-w>J<cr><c-w>:resize 20<cr>
 tmap <esc><esc> <c-w>:q!<cr>
 
-nnoremap  :Files<cr>
+nnoremap  :GFiles<cr>
 
-" comments
-map  gcc
+map  gcc        " comments
 
-" Use new regular expression engine
-set re=0
+set re=0        " Use new regular expression engine
 
-" Vimscript file settings {{{
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
+autocmd FileType xml,html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml,html inoremap </ </<C-x><C-o>
+
+autocmd BufWritePre *.js,*.vim,*.cpp :normal gg=G``        " reindent right before save, and come back to position
+
+nmap ' `        " recursive map ' to ` so that jumps to mark are on the right column, not just the right line
+

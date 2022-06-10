@@ -2,6 +2,7 @@ alias python=python3
 alias pip=pip3
 
 alias ta="tmux a -t"
-alias tc="tmux new -s"
+alias tc="tmux new-session -A -s "
+alias tl="tmux ls"
 
 alias vim="vim -p"
