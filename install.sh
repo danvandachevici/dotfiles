@@ -24,7 +24,7 @@ vim +PluginInstall +qall
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc
 
 # ZSH
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 [ ! -f ~/.aliases ] && ln -s $CURPATH/aliases $HOME/.aliases
 [ ! -f ~/.zshrc ] && ln -s $CURPATH/zshrc $HOME/.zshrc && source $HOME/.zshrc
 
