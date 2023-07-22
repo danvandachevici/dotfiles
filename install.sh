@@ -27,7 +27,7 @@ vim +PluginInstall +qall
 # ensure zsh is installed
 zsh --version 
 if [ $? -ne 0 ] && [ -f /etc/debian_version ]; then
-    sudo apt install zsh
+    sudo apt install -y zsh
 fi
 # install oh my zsh
 [ ! -d ~/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
