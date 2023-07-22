@@ -36,6 +36,7 @@ set statusline+=\ @
 set statusline+=\ %p%%\ 
 " current buffer
 set statusline+=CurBuf:%n\ \ 
+set statusline+=%c/%l\ \ 
 
 " filename
 set statusline+=%f\ \ 
@@ -49,7 +50,7 @@ set statusline+=%*
 
 hi User1 ctermbg=cyan ctermfg=black guibg=cyan guifg=black
 hi User2 ctermbg=lightgreen ctermfg=black guibg=lightgreen guifg=black
-hi User3 ctermbg=lightblue ctermfg=lightyellow guibg=lightblue guifg=lightyellow
+hi User3 ctermbg=lightblue ctermfg=black guibg=lightblue guifg=lightyellow
 hi User4 ctermbg=black ctermfg=lightyellow guibg=black guifg=lightyellow
 hi User5 ctermbg=lightyellow ctermfg=black guibg=lightyellow guifg=black
 
@@ -88,11 +89,11 @@ function! GetGitBranch()
 endfunction
 
 function! GetGitDiffSummary()
-"  let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
-"  let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
-"  let l:adds = "+".system("git diff --numstat -- % | awk '{printf($1)}'")
-"  let l:subs = "-".system("git diff --numstat -- % | awk '{printf($2)}'")
-"  return l:adds."/".l:subs
+  "  let l:file_additions = "+".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($1)}'")
+  "  let l:file_subtractions = "-".system("git diff --numstat -- % | sed '/^$/d' | awk -F '\t' '{printf($2)}'")
+  "  let l:adds = "+".system("git diff --numstat -- % | awk '{printf($1)}'")
+  "  let l:subs = "-".system("git diff --numstat -- % | awk '{printf($2)}'")
+  "  return l:adds."/".l:subs
 endfunction
 
 autocmd BufEnter * call GetGitBranch()

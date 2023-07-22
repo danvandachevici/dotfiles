@@ -16,6 +16,8 @@ VIMFOLDER=$HOME/.vim
 [ ! -f ~/.vim/syntastic.vim ] && ln -s $CURPATH/vim/syntastic.vim $VIMFOLDER/syntastic.vim
 [ ! -f ~/.vim/comments.vim ] && ln -s $CURPATH/vim/comments.vim $VIMFOLDER/comments.vim
 [ ! -f ~/.vim/fzf.vim ] && ln -s $CURPATH/vim/fzf.vim $VIMFOLDER/fzf.vim
+[ ! -d ~/.vim/bundle ] && mkdir ~/.vim/bundle
+[ ! -d ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # BASH
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc

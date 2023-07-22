@@ -114,3 +114,6 @@ eval "$(fnm env)"
 #    fi
 #    unset sessions
 #fi
+
+
+PATH=$PATH:/Users/dan/Library/Python/3.9/bin

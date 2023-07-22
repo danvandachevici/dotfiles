@@ -1,3 +1,5 @@
+set t_Co=256
+
 set nocompatible
 
 set directory=.swp/,~/.swapfiles/,/tmp/
@@ -33,7 +35,8 @@ syntax enable        " not sure which one of these two does the job
 nnoremap p ]p
 nnoremap <c-p> p
 
-highlight Comment cterm=underline ctermbg=black ctermfg=lightgray
+highlight Comment ctermbg=black ctermfg=lightgray
+" highlight Comment cterm=underline ctermbg=black ctermfg=lightgray
 
 set showcmd        " Shows your command in the bottom right corner, on normal mode
 set timeoutlen=5000        " By default, the <Leader> is toggled for 1s. Below I move it to 5s.
@@ -93,3 +96,16 @@ autocmd BufWritePre *.js,*.vim,*.cpp :normal gg=G``        " reindent right befo
 
 nmap ' `        " recursive map ' to ` so that jumps to mark are on the right column, not just the right line
 
+
+" Always open new files in new tabs
+" autocmd VimEnter * tab all
+" autocmd BufAdd * exe 'tablast | tabe "' . expand( "<afile") .'"'
+
+
+" if &term =~ '^screen'
+"     " tmux will send xterm-style keys when its xterm-keys option is on
+"     execute "set <xUp>=\e[1;*A"
+"     execute "set <xDown>=\e[1;*B"
+"     execute "set <xRight>=\e[1;*C"
+"     execute "set <xLeft>=\e[1;*D"
+" endif

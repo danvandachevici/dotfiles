@@ -1,7 +1,12 @@
+" nmap „ :tabp<cr>
+" nmap ” :tabn<cr>
+" nmap ¨ :tabm -<cr>
+" nmap ± :tabm +<cr>
+
 nmap „ :tabp<cr>
 nmap ” :tabn<cr>
-nmap ¨ :tabm -<cr>
-nmap ± :tabm +<cr>
+nmap <silent> <C-S-Right> :tabm +<cr>
+nmap <silent> <C-S-Left> :tabm -<cr>
 
 nmap tn :tab n 
 
