@@ -24,7 +24,13 @@ vim +PluginInstall +qall
 [ ! -f ~/.bashrc ] && ln -s $CURPATH/bashrc $HOME/.bashrc && source $HOME/.bashrc
 
 # ZSH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# ensure zsh is installed
+zsh --version 
+if [ $? -ne 0 ] && [ -f /etc/debian_version ]; then
+    sudo apt install zsh
+fi
+# install oh my zsh
+[ ! -d ~/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 [ ! -f ~/.aliases ] && ln -s $CURPATH/aliases $HOME/.aliases
 [ ! -f ~/.zshrc ] && ln -s $CURPATH/zshrc $HOME/.zshrc && source $HOME/.zshrc
 
