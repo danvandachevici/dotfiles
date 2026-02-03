@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,6 +74,28 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Custom powerline prompt segment for tmux
+prompt_tmux() {
+  if [[ -n $TMUX ]]; then
+    local tmux_session=$(tmux display-message -p '#S')
+    prompt_segment cyan black "⧉ $tmux_session"
+  fi
+}
+
+# Customize agnoster prompt to include tmux indicator
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  prompt_tmux
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_bzr
+  prompt_hg
+  prompt_end
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -102,18 +124,27 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(fnm env)"
+# fnm (Fast Node Manager) configuration
+FNM_PATH="$HOME/.local/share/fnm"
+FNM_DIR="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  export XDG_RUNTIME_DIR="/run/user/$(id -u $USER)"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
 
-. ~/.aliases
-. ~/.paths
-# show available tmux sessions
-#if [[ -z $TMUX ]]; then
-#    sessions=$( tmux ls 2> /dev/null | awk '! /attached/ { sub(":", "", $1); print $1; }' | xargs echo )
-#    if [[ ! -z $sessions ]]; then
-#        echo "==> Available tmux sessions: $sessions"
-#    fi
-#    unset sessions
-#fi
+export PATH="$HOME/.local/bin:$PATH"
 
+# Load aliases if they exist
+[ -f ~/.aliases ] && . ~/.aliases
+[ -f ~/.paths ] && . ~/.paths
 
-PATH=$PATH:/Users/dan/Library/Python/3.9/bin
+# Show available tmux sessions on login
+if [[ -z $TMUX ]]; then
+    sessions=$( tmux ls 2> /dev/null | awk '! /attached/ { sub(":", "", $1); print $1; }' | xargs echo )
+    if [[ ! -z $sessions ]]; then
+        echo "Available tmux sessions: $sessions"
+    fi
+    unset sessions
+fi

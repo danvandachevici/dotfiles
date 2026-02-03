@@ -15,7 +15,7 @@ set number        " Aspect
 
 set wildmode=list:longest,list:full        " Autocompletion on the commands
 
-set list lcs=tab:»·,trail:·        " Display chars on tabs and trailing spaces -> 
+"set list lcs=tab:»·,trail:·        " Display chars on tabs and trailing spaces -> 
 
 set mouse=a        " enable mouse actions
 
