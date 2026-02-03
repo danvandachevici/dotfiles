@@ -70,7 +70,7 @@ HIST_STAMPS="%d/%m/%y %T"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -148,3 +148,4 @@ if [[ -z $TMUX ]]; then
     fi
     unset sessions
 fi
+PATH=$PATH:/Users/dan/Library/Python/3.9/bin
