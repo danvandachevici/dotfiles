@@ -8,3 +8,4 @@ alias tl="tmux ls"
 alias vim="vim -p"
 
 alias pingmain="ping mainserver"
+alias win="virsh -c qemu:///system"
