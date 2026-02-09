@@ -70,30 +70,68 @@ HIST_STAMPS="%d/%m/%y %T"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Custom powerline prompt segment for tmux
+# Custom powerline prompt segment for time (soft blue)
+prompt_time() {
+  prompt_segment 67 black "%D{%H:%M:%S}"
+}
+
+# Custom powerline prompt segment for tmux (soft cyan)
 prompt_tmux() {
   if [[ -n $TMUX ]]; then
     local tmux_session=$(tmux display-message -p '#S')
-    prompt_segment cyan black "⧉ $tmux_session"
+    prompt_segment 73 black "⧉ $tmux_session"
   fi
 }
 
-# Customize agnoster prompt to include tmux indicator
+# Override prompt_context to remove username, only show hostname for SSH
+prompt_context() {
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    # Soft purple for SSH connections
+    prompt_segment 104 black "%m"
+  fi
+}
+
+# Override prompt_status to show exit code with color
+prompt_status() {
+  local -a symbols
+  symbols=()
+
+  if [[ $RETVAL -ne 0 ]]; then
+    # Orange/amber for failure
+    prompt_segment 208 black "✘ $RETVAL"
+  else
+    # Soft green for success
+    prompt_segment 71 black "✓"
+  fi
+}
+
+# Override directory color (teal background with black text)
+prompt_dir() {
+  prompt_segment 37 black '%~'
+}
+
+# Customize agnoster prompt with time and status
 build_prompt() {
   RETVAL=$?
-  prompt_status
-  prompt_virtualenv
-  prompt_tmux
-  prompt_context
-  prompt_dir
-  prompt_git
-  prompt_bzr
-  prompt_hg
+  prompt_status       # Show exit code (green ✓ or orange ✘)
+  prompt_time         # Show current time
+  prompt_context      # Show hostname only if SSH
+  prompt_dir          # Show current directory
+  prompt_git          # Show git status
   prompt_end
+}
+
+# Set PROMPT to use our custom build_prompt function
+PROMPT='%{%f%b%k%}$(build_prompt) '
+
+# Update prompt every second to refresh time
+TMOUT=1
+TRAPALRM() {
+    zle reset-prompt
 }
 
 # User configuration
@@ -140,6 +178,10 @@ export PATH="$HOME/.local/bin:$PATH"
 [ -f ~/.aliases ] && . ~/.aliases
 [ -f ~/.paths ] && . ~/.paths
 
+# Tmux aliases for supercharged setup
+alias tmux-new='tmux new-session \; split-window -h -l 35 "cat ~/.tmux-cheatsheet.txt && read" \; select-pane -t left'
+alias tmux-cheat='tmux split-window -h -l 35 "cat ~/.tmux-cheatsheet.txt && read" && tmux select-pane -t left'
+
 # Show available tmux sessions on login
 if [[ -z $TMUX ]]; then
     sessions=$( tmux ls 2> /dev/null | awk '! /attached/ { sub(":", "", $1); print $1; }' | xargs echo )
@@ -148,4 +190,6 @@ if [[ -z $TMUX ]]; then
     fi
     unset sessions
 fi
+
+# Python PATH (from dotfiles/zshrc)
 PATH=$PATH:/Users/dan/Library/Python/3.9/bin

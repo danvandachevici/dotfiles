@@ -8,4 +8,5 @@ alias tl="tmux ls"
 alias vim="vim -p"
 
 alias pingmain="ping mainserver"
-alias win="virsh -c qemu:///system"
+alias k="kubectl"
+alias klist="kubectl get pods -n"

@@ -15,7 +15,19 @@ set number        " Aspect
 
 set wildmode=list:longest,list:full        " Autocompletion on the commands
 
-"set list lcs=tab:»·,trail:·        " Display chars on tabs and trailing spaces -> 
+" Show indentation with visual guides
+set list
+set listchars=tab:→\ ,trail:·,extends:»,precedes:«,nbsp:⎵
+set listchars+=space:·
+
+" Highlight indentation levels
+set cursorcolumn        " Highlight the current column
+hi CursorColumn ctermbg=234 guibg=#1c1c1c
+
+" Match indentation highlighting (shows indent guides)
+let g:indentLine_enabled = 1
+let g:indentLine_char = '┊'
+let g:indentLine_color_term = 239 
 
 set mouse=a        " enable mouse actions
 
